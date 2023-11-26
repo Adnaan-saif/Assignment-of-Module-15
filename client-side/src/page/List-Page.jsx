@@ -1,12 +1,12 @@
 import React from 'react';
 import AppNavBar from "../component/AppNavBar.jsx";
-import TaskList from "../component/TaskList.jsx";
+import FormList from '../component/FormList.jsx';
 
 const ListPage = () => {
     return (
         <div>
             <AppNavBar/>
-            <TaskList/>
+            <FormList/>
         </div>
     );
 };

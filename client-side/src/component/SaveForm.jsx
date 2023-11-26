@@ -5,7 +5,18 @@ import {useNavigate} from "react-router-dom";
 const SaveForm = () => {
 
     let navigate=useNavigate();
-    let [FormValue,SetFormValue]=useState({email:"", title:"", description:"", status:""})
+    let [FormValue,SetFormValue]=useState({
+        firstName:"", 
+        lastName:"", 
+        gender:"", 
+        dateOfBirth:"", 
+        nationality:"", 
+        address:"",
+        email:"", 
+        phone:"", 
+        admissionDate:"",
+        courses:""
+        })
     let [UpdateID,SetUpdateID]=useState(null);
 
 
@@ -23,10 +34,16 @@ const SaveForm = () => {
     const FillForm =async (id) => {
        let res= await formByIDRequest(id)
        SetFormValue({
-           email:res['email'],
-           title:res['title'],
-           description:res['description'],
-           status:res['status']
+        firstName:res['firstName'], 
+        lastName:res['lastName'], 
+        gender:res['gender'], 
+        dateOfBirth:res['dateOfBirth'], 
+        nationality:res['nationality'], 
+        address:res['address'],
+        email:res['email'], 
+        phone:res['phone'], 
+        admissionDate:res['admissionDate'],
+        courses:res['courses']
        })
     }
 
@@ -39,17 +56,35 @@ const SaveForm = () => {
     }
 
     const Save = async () => {
-        if(FormValue.email.length===0){
-            toast.error("Email Required !")
+        if(FormValue.firstName.length===0){
+            toast.error("Please fill all fields!")
         }
-        else if(FormValue.title.length===0){
-            toast.error("Title Required !")
+        else if(FormValue.lastName.length===0){
+            toast.error("Please fill all fields!")
         }
-        else if(FormValue.description.length===0){
-            toast.error("Description Required !")
+        else if(FormValue.gender.length===0){
+            toast.error("Please fill all fields!")
         }
-        else if(FormValue.status.length===0){
-            toast.error("Status Required !")
+        else if(FormValue.dateOfBirth.length===0){
+            toast.error("Please fill all fields!")
+        }
+        else if(FormValue.nationality.length===0){
+            toast.error("Please fill all fields!")
+        }
+        else if(FormValue.address.length===0){
+            toast.error("Please fill all fields!")
+        }
+        else if(FormValue.email.length===0){
+            toast.error("Please fill all fields!")
+        }
+        else if(FormValue.phone.length===0){
+            toast.error("Please fill all fields!")
+        }
+        else if(FormValue.admissionDate.length===0){
+            toast.error("Please fill all fields!")
+        }
+        else if(FormValue.courses.length===0){
+            toast.error("Please fill all fields!")
         }
         else{
             if(UpdateID==null){
@@ -83,20 +118,44 @@ const SaveForm = () => {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-md-4 p-2">
-                    <label className="form-label">Your Email Address</label>
-                    <input value={FormValue.email} onChange={(e)=>InputOnChange('email',e.target.value)} type="text" className="form-control" placeholder="Email"/>
+                    <label className="form-label">Your first name</label>
+                    <input value={FormValue.firstName} onChange={(e)=>InputOnChange('firstName',e.target.value)} type="text" className="form-control" placeholder="First name"/>
                 </div>
                 <div className="col-md-4 p-2">
-                    <label className="form-label">Your Title</label>
-                    <input value={FormValue.title} onChange={(e)=>InputOnChange('title',e.target.value)} type="text" className="form-control" placeholder="Title"/>
+                    <label className="form-label">Your last name</label>
+                    <input value={FormValue.lastName} onChange={(e)=>InputOnChange('lastName',e.target.value)} type="text" className="form-control" placeholder="Last name"/>
                 </div>
                 <div className="col-md-4 p-2">
-                    <label className="form-label">Your Description</label>
-                    <input value={FormValue.description} onChange={(e)=>InputOnChange('description',e.target.value)} type="text" className="form-control" placeholder="Description"/>
+                    <label className="form-label">Your gender</label>
+                    <input value={FormValue.gender} onChange={(e)=>InputOnChange('gender',e.target.value)} type="text" className="form-control" placeholder="Gender"/>
                 </div>
                 <div className="col-md-4 p-2">
-                    <label className="form-label">Your Status</label>
-                    <input value={FormValue.status} onChange={(e)=>InputOnChange('status',e.target.value)}  type="text" className="form-control" placeholder="Status"/>
+                    <label className="form-label">Your date of birth</label>
+                    <input value={FormValue.dateOfBirth} onChange={(e)=>InputOnChange('dateOfBirth',e.target.value)}  type="text" className="form-control" placeholder=""/>
+                </div>
+                <div className="col-md-4 p-2">
+                    <label className="form-label">Your nationality</label>
+                    <input value={FormValue.nationality} onChange={(e)=>InputOnChange('nationality',e.target.value)}  type="text" className="form-control" placeholder="Bangladesh"/>
+                </div>
+                <div className="col-md-4 p-2">
+                    <label className="form-label">Your address</label>
+                    <input value={FormValue.address} onChange={(e)=>InputOnChange('address',e.target.value)}  type="text" className="form-control" placeholder=""/>
+                </div>
+                <div className="col-md-4 p-2">
+                    <label className="form-label">Your e-mail</label>
+                    <input value={FormValue.email} onChange={(e)=>InputOnChange('email',e.target.value)}  type="text" className="form-control" placeholder=""/>
+                </div>
+                <div className="col-md-4 p-2">
+                    <label className="form-label">Your phone</label>
+                    <input value={FormValue.phone} onChange={(e)=>InputOnChange('phone',e.target.value)}  type="text" className="form-control" placeholder=""/>
+                </div>
+                <div className="col-md-4 p-2">
+                    <label className="form-label">Your admission date</label>
+                    <input value={FormValue.admissionDate} onChange={(e)=>InputOnChange('admissionDate',e.target.value)}  type="text" className="form-control" placeholder=""/>
+                </div>
+                <div className="col-md-4 p-2">
+                    <label className="form-label">Your courses</label>
+                    <input value={FormValue.courses} onChange={(e)=>InputOnChange('courses',e.target.value)}  type="text" className="form-control" placeholder=""/>
                 </div>
                 <div className="col-md-4 p-2">
                     <label className="form-label">Save Change</label><br/>

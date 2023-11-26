@@ -1,22 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {deleteTaskRequest, listTaskRequest} from "../apiRequest/apiRequest.js";
+import {deleteFormRequest, listFormRequest} from "../apiRequest/apiRequest.js";
 import {toast, Toaster} from "react-hot-toast";
 import {Link} from "react-router-dom";
 
-const TaskList = () => {
+const FormList = () => {
 
     let [data,setData]=useState([]);
     let [change,setChange]=useState(0);
 
     useEffect(() => {
         (async ()=>{
-          let res= await listTaskRequest();
+          let res= await listFormRequest();
           setData(res);
         })()
     }, [change]);
 
     const onDelete =async(id) => {
-       let res= await deleteTaskRequest(id);
+       let res= await deleteFormRequest(id);
        if(res){
            toast.success("Delete completed");
            setChange(new Date().getTime())
@@ -42,11 +42,16 @@ const TaskList = () => {
                             <table className="table">
                                 <thead>
                                       <tr>
+                                          <th>First Name</th>
+                                          <th>Last Name</th>
+                                          <th>Gender</th>
+                                          <th>Date of Birth</th>
+                                          <th>Nationality</th>
+                                          <th>Address</th>
                                           <th>Email</th>
-                                          <th>Title</th>
-                                          <th>Description</th>
-                                          <th>Status</th>
-                                          <th>Action</th>
+                                          <th>Phone</th>
+                                          <th>Admission Date</th>
+                                          <th>Courses</th>
                                       </tr>
                                 </thead>
                                 <tbody>
@@ -54,10 +59,16 @@ const TaskList = () => {
                                          data.map((item,i)=>{
                                              return(
                                                  <tr key={i}>
+                                                     <td>{item['firstName']}</td>
+                                                     <td>{item['lastName']}</td>
+                                                     <td>{item['gender']}</td>
+                                                     <td>{item['dateOfBirth']}</td>
+                                                     <td>{item['nationality']}</td>
+                                                     <td>{item['address']}</td>
                                                      <td>{item['email']}</td>
-                                                     <td>{item['title']}</td>
-                                                     <td>{item['description']}</td>
-                                                     <td>{item['status']}</td>
+                                                     <td>{item['phone']}</td>
+                                                     <td>{item['admissionDate']}</td>
+                                                     <td>{item['courses']}</td>
                                                      <td>
                                                          <button onClick={()=>{onDelete(item['_id'])}} className="btn btn-danger">Delete</button>
                                                          <Link className="btn mx-2 btn-success" to={"/save?id="+item['_id']}>Edit</Link>
@@ -78,4 +89,4 @@ const TaskList = () => {
     }
 };
 
-export default TaskList;
+export default FormList;

@@ -6,10 +6,10 @@ const AppNavBar = () => {
     return (
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="#home">MERN APP</Navbar.Brand>
+                    <Navbar.Brand href="#home">Student information</Navbar.Brand>
                     <Nav className="me-auto">
                         <NavLink className="nav-link" to="/">List</NavLink>
-                        <NavLink className="nav-link" to="/save">Save</NavLink>
+                        <NavLink className="nav-link" to="/save">Create</NavLink>
                     </Nav>
                 </Container>
             </Navbar>
