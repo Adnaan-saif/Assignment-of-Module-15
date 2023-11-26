@@ -21,7 +21,7 @@ const SaveForm = () => {
     }, []);
     
     const FillForm =async (id) => {
-       let res= await taskByIDRequest(id)
+       let res= await formByIDRequest(id)
        SetFormValue({
            email:res['email'],
            title:res['title'],
@@ -53,7 +53,7 @@ const SaveForm = () => {
         }
         else{
             if(UpdateID==null){
-                let res=await createTaskRequest(FormValue);
+                let res=await createFormRequest(FormValue);
                 if(res){
                     toast.success("Create Request Completed");
                     navigate("/");
@@ -63,7 +63,7 @@ const SaveForm = () => {
                 }
             }
             else{
-                let res=await updateTaskRequest(FormValue,UpdateID);
+                let res=await updateFormRequest(FormValue,UpdateID);
                 if(res){
                     toast.success("Update Request Completed");
                     navigate("/");
