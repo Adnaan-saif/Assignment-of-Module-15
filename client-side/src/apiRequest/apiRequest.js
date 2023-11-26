@@ -20,7 +20,7 @@ export async function formByIDRequest(id){
     }
 }
 
-export async function creatFormRequest(postBody){
+export async function createFormRequest(postBody){
     try {
         let res=await axios.post("http://localhost:5010/api/v1/create-form",postBody);
         if(res.status===200){
